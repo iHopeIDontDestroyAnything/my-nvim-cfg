@@ -29,7 +29,7 @@ opt.cursorline = true
 opt.termguicolors = true--color text
 opt.background = "dark" --dark color scheme 
 opt.signcolumn = "yes"  
-vim.cmd "colorscheme retrobox"
+--vim.cmd "colorscheme retrobox"
 --use system clipboard as default
 opt.clipboard:append("unnamedplus")
 
