@@ -1,3 +1,7 @@
+to build neovim from source 
+https://github.com/neovim/neovim
+
+
 dont forget to change the static path in init.lua
 
 also link to my favourite vim colorscheme :
