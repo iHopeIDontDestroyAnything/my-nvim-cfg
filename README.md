@@ -4,6 +4,9 @@ https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-arm64.appi
 x86_64 appimage:
 https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.appimage
 
+neovim source:
+https://github.com/neovim/neovim
+
 font:
 https://github.com/ryanoasis/nerd-fonts/releases/latest/download/GeistMono.zip
 
