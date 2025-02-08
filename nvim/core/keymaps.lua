@@ -15,6 +15,10 @@ keymap.set("i","<C-l>","<RIGHT>", {desc = "alt l in insert mode to move right"})
 keymap.set("i","<C-k>","<UP>", {desc = "alt k in insert mode to move up"})
 keymap.set("i","<C-j>","<DOWN>", {desc = "alt j in isert mode to move down"})
 
+--normal mode
+keymap.set("n","<S-h>","<S-LEFT>", {desc = "shift + h = previous word"})
+keymap.set("n","<S-l>","<S-RIGHT>", {desc = "shift + l = next word"})
+
 --splitting windows
 keymap.set("n","<leader>sv","<C-w>s", {desc = "split vertically"})
 keymap.set("n","<leader>sh","<C-w>v", {desc = "split horizontally"})
