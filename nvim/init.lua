@@ -28,7 +28,9 @@ vim.opt.rtp:prepend(lazypath)
 --setup includes plugins
 
 require("lazy").setup({
-  {"nvim-tree/nvim-tree.lua"}
+ {"nvim-tree/nvim-tree.lua",
+    dependencies = "nvim-tree/nvim-web-devicons"
+  }
 
 })
 
