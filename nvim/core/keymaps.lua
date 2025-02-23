@@ -67,6 +67,7 @@ keymap.set("n","<leader>fr","<cmd>Telescope oldfiles<CR>", {desc = "find recent 
 --for faster and easier autocomplete 
 keymap.set("i","<C-j>","<C-n>",{desc = "autocomplete with ctrl j "})
 keymap.set("i","<C-k>","<C-p>",{desc = "autocomplete with ctrl k "})
+keymap.set("i","<C-c>","<C-y>",{desc = "confirm autocomplete with ctrl e "})
 
 
 
