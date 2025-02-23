@@ -73,4 +73,6 @@ keymap.set("i","<C-c>","<C-y>",{desc = "confirm autocomplete with ctrl e "})
 keymap.set("n","<leader>il",">>",{desc = "indent right"})
 keymap.set("n","<leader>ih","<<",{desc = "indent left"})
 
+--delete word
+keymap.set("n","<leader>dh","diw",{desc = "delete word under cursor (here)"})
 
