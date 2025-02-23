@@ -69,6 +69,8 @@ keymap.set("i","<C-j>","<C-n>",{desc = "autocomplete with ctrl j "})
 keymap.set("i","<C-k>","<C-p>",{desc = "autocomplete with ctrl k "})
 keymap.set("i","<C-c>","<C-y>",{desc = "confirm autocomplete with ctrl e "})
 
-
+--indentation
+keymap.set("n","<leader>il",">>",{desc = "indent right"})
+keymap.set("n","<leader>ih","<<",{desc = "indent left"})
 
 
