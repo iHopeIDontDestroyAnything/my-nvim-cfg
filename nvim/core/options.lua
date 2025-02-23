@@ -1,8 +1,8 @@
 --nvim file explorer tree display
 vim.cmd("let g:netrw_liststyle = 3")
 vim.cmd("set noea") --disables changing window size when closing and opening new windows
+vim.cmd("set complete+=i")
 
---no fucking idea 
 local opt = vim.opt
 
 --shows line numbers
