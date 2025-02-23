@@ -64,6 +64,10 @@ keymap.set("n","<leader>fc","<cmd>Telescope grep_string<CR>", {desc = "find stri
 keymap.set("n","<leader>fs","<cmd>Telescope live_grep<CR>", {desc = "find string in current directory"})
 keymap.set("n","<leader>fr","<cmd>Telescope oldfiles<CR>", {desc = "find recent files"})
 
+--for faster and easier autocomplete 
+keymap.set("i","<C-j>","<C-n>",{desc = "autocomplete with ctrl j "})
+keymap.set("i","<C-k>","<C-p>",{desc = "autocomplete with ctrl k "})
+
 
 
 
