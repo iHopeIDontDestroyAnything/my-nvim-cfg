@@ -28,7 +28,7 @@ vim.opt.rtp:prepend(lazypath)
 --setup includes plugins
 
 require("lazy").setup({
-  dofile("/home/jakub/.config/nvim/plugins/whichKey.lua"), --shows available commands in all modes
+  --dofile("/home/jakub/.config/nvim/plugins/whichKey.lua"), --shows available commands in all modes
   dofile("/home/jakub/.config/nvim/plugins/nvimTree.lua"), --browser for nvim
   dofile("/home/jakub/.config/nvim/plugins/autoPairs.lua"),--pairs all () {} [] "" ''  
   dofile("/home/jakub/.config/nvim/plugins/telescope.lua"),--search tool 
