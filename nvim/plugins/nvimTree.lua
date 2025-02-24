@@ -7,6 +7,7 @@ return{"nvim-tree/nvim-tree.lua",
   },
   view = {
     width = 30,
+    preserve_window_proportions = true,
   },
   renderer = {
     group_empty = true,
