@@ -70,5 +70,5 @@ keymap.set("i","<C-k>","<C-p>",{desc = "autocomplete with ctrl k "})
 keymap.set("i","<C-c>","<C-y>",{desc = "confirm autocomplete with ctrl e "})
 
 --delete word
-keymap.set("n","<leader>dh","diw",{desc = "delete word under cursor (here)"})
+keymap.set("n","<leader>dd","diw",{desc = "delete word under cursor (here)"})
 
