@@ -2,6 +2,8 @@
 vim.cmd("let g:netrw_liststyle = 3")
 vim.cmd("set noea") --disables changing window size when closing and opening new windows
 vim.cmd("set complete+=i")
+vim.cmd("set scrolloff+=10")
+vim.cmd("set sidescrolloff+=10")
 
 local opt = vim.opt
 
