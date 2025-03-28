@@ -32,6 +32,7 @@ return {
         "ast_grep",
         "html",
         "cssls",
+        "lua_ls",
       },
     })
 
