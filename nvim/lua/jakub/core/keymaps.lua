@@ -61,3 +61,5 @@ keymap.set("n","<leader>tc","<cmd>tabnew %<CR>", {desc = "open current file in n
 --delete word
 keymap.set("n","<leader>dd","diw",{desc = "delete word under cursor (here)"})
 
+--select word
+keymap.set("n","<leader>vv","viw")
