@@ -49,7 +49,7 @@ keymap.set("t","<C-j>","<DOWN>", {desc = "ctrl h in terminal mode to move down"}
 --keymap.set("n","<leader>bc","<cmd>NvimTreeCollapse<CR>", {desc = "Collapse browser"})
 --keymap.set("n","<leader>br","<cmd>NvimTreeRefresh<CR>", {desc = "Refresh browser"})
 --keymap.set("n","<leader>bh","<cmd>NvimTreeFindFileToggle<CR>", {desc = "Toggle browser here (on current file)"})
-keymap.set("n","<leader>b","<cmd>Ex<CR>")
+keymap.set("n","<leader>bb","<cmd>Ex<CR>")
 --tab keymaps
 keymap.set("n","<leader>to","<cmd>tabnew<CR>", {desc = "open new tab"})
 keymap.set("n","<leader>tx","<cmd>tabclose<CR>", {desc = "close current tab"})
