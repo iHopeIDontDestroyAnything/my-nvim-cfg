@@ -1,5 +1,5 @@
 --nvim file explorer tree display
-vim.cmd("let g:netrw_liststyle = 3")
+--vim.cmd("let g:netrw_liststyle = 3")
 vim.cmd("set noea") --disables changing window size when closing and opening new windows
 vim.cmd("set complete+=i")
 vim.cmd("set scrolloff+=10")
