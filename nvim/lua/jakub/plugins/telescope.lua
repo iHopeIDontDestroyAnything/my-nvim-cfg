@@ -21,7 +21,7 @@ return
 
     telescope.setup({
       defaults = {
-        path_display = { "smart"},
+        path_display = { "absolute"},
           },
     })
 
