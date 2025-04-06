@@ -48,15 +48,6 @@ keymap.set("t","<C-l>","<RIGHT>", {desc = "ctrl h in terminal mode to move right
 keymap.set("t","<C-k>","<UP>", {desc = "ctrl h in terminal mode to move up"})
 keymap.set("t","<C-j>","<DOWN>", {desc = "ctrl h in terminal mode to move down"})
 
-t") 
-                                         vim.cmd("term") end, {desc = "open terminal in vertical split"})
-
-keymap.set('t', '<ESC>', [[<C-\><C-n>]], {desc = "normal mode in termianl"})
-keymap.set('t', 'jk', [[<C-\><C-n>]], {desc = "normal mode in termianl"})
-keymap.set("t","<C-h>","<LEFT>", {desc = "ctrl h in terminal mode to move left"})
-keymap.set("t","<C-l>","<RIGHT>", {desc = "ctrl h in terminal mode to move right"})
-keymap.set("t","<C-k>","<UP>", {desc = "ctrl h in terminal mode to move up"})
-keymap.set("t","<C-j>","<DOWN>", {desc = "ctrl h in terminal mode to move down"})
 
 --browser
 keymap.set("n","<leader>bb", "<cmd>Ex<CR>")
