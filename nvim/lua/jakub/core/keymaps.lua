@@ -39,7 +39,16 @@ keymap.set("n","<A-l>","<C-w>>", {desc = "increase width of current split"})
 keymap.set("n","<A-h>","<C-w><", {desc = "decrease width of current split"})
 
 --terminal bindings
-keymap.set("n", "<leader>tt", function() vim.cmd("split") 
+keymap.set("n", "<leader>tt", "<cmd>split<CR><cmd>term<CR>i", {desc = "open terminal in vertical split"})
+
+keymap.set('t', '<ESC>', [[<C-\><C-n>]], {desc = "normal mode in termianl"})
+keymap.set('t', 'jk', [[<C-\><C-n>]], {desc = "normal mode in termianl"})
+keymap.set("t","<C-h>","<LEFT>", {desc = "ctrl h in terminal mode to move left"})
+keymap.set("t","<C-l>","<RIGHT>", {desc = "ctrl h in terminal mode to move right"})
+keymap.set("t","<C-k>","<UP>", {desc = "ctrl h in terminal mode to move up"})
+keymap.set("t","<C-j>","<DOWN>", {desc = "ctrl h in terminal mode to move down"})
+
+t") 
                                          vim.cmd("term") end, {desc = "open terminal in vertical split"})
 
 keymap.set('t', '<ESC>', [[<C-\><C-n>]], {desc = "normal mode in termianl"})
