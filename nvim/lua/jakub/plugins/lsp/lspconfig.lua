@@ -25,7 +25,6 @@ return {
       callback = function(ev)
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
         local opts = { buffer = ev.buf, silent = true }
 
 
