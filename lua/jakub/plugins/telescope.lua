@@ -12,11 +12,18 @@ return
     local telescope =  require("telescope")
     local actions = require("telescope.actions")
     local builtin = require("telescope.builtin")
+    local utils = require("telescope.utils")
 
-    vim.keymap.set("n","<leader>ff","<cmd>Telescope find_files<CR>", {desc = "find files"})
-    vim.keymap.set("n","<leader>ft","<cmd>TodoTelescope<CR>",{  desc = "finds todo comments"})
+    vim.keymap.set("n","<leader>ff",function() builtin.find_files({}) end, {desc = "find files"})
 
+    vim.keymap.set("n","<leader>fc",function() builtin.find_files({
+                                                                  cwd = utils.buffer_dir(),
+                                                                  }) end, {desc = "find files relative to current buffer"})
 
+    vim.keymap.set("n","<leader>fa",function() builtin.find_files({
+                                                                  hidden = true,
+                                                                  no_ignore = true,
+                                                                  }) end, {desc = "find all files"})
 
 
     vim.keymap.set("n","<leader>fw", function()
