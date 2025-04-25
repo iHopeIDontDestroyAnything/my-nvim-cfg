@@ -15,6 +15,10 @@ return
 
     vim.keymap.set("n","<leader>ff","<cmd>Telescope find_files<CR>", {desc = "find files"})
     vim.keymap.set("n","<leader>ft","<cmd>TodoTelescope<CR>",{  desc = "finds todo comments"})
+
+
+
+
     vim.keymap.set("n","<leader>fw", function()
           builtin.grep_string({ search = vim.fn.input("Grep : ")})
       end)
