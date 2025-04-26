@@ -33,6 +33,7 @@ return {
         "html",
         "cssls",
         "lua_ls",
+        "bashls"
       },
     })
 

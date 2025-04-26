@@ -7,5 +7,6 @@ require("jakub.lazy")
 vim.cmd "colorscheme vim"
 vim.cmd("hi DiagnosticError guifg=Black")
 vim.cmd("hi DiagnosticWarn guifg=Black")
+vim.cmd("hi CmpItemKind guifg=Black")
 
 

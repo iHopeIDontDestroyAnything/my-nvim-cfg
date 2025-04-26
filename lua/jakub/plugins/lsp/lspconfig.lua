@@ -74,14 +74,11 @@ return {
         lspconfig[server_name].setup({
           capabilities = capabilities,
           settings = {
-            hints = {
-              enable = false,
-            },
           },
         })
       end,
   ["clangd"] = function()
-      local lspconfig = require("lspconfig")
+      -- local lspconfig = require("lspconfig")
       lspconfig.clangd.setup {
           cmd = { "clangd", 
               "--header-insertion=never", 
@@ -89,7 +86,21 @@ return {
           },
       }
   end,
-
+  ["pyright"] = function()
+      -- local lspconfig = require("lspconfig")
+      lspconfig.pyright.setup {
+          settings = {
+            pyright = {autoImportCompletion = true},
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+                typeCheckingMode = 'off'}
+            }
+          }
+        }  
+      end,
     })
   end,
 }
