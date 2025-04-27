@@ -84,7 +84,7 @@ return {
               "--header-insertion=never", 
               "--completion-style=detailed",
               "--background-index",
-              "--query-driver=/Users/dsalnikov/.espressif/tools/xtensa-esp32-elf/esp-2021r1-8.4.0/**/bin/xtensa-esp32-elf-*",
+              "--query-driver=/home/jakub/.espressif/tools/xtensa-esp32-elf/esp-2021r1-8.4.0/**/bin/xtensa-esp32-elf-*",
           },
       }
   end,
