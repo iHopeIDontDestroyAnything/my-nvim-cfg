@@ -34,7 +34,7 @@ opt.background = "dark" --dark color scheme
 opt.signcolumn = "yes"  
 --vim.cmd "colorscheme tokyonight"
 --use system clipboard as default
-opt.clipboard:append("unnamedplus")
+-- opt.clipboard:append("unnamedplus")
 --on arch linux need xclip installed for this to work
 
 --splitting windows

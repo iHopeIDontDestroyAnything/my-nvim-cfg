@@ -80,11 +80,15 @@ return {
   ["clangd"] = function()
       -- local lspconfig = require("lspconfig")
       lspconfig.clangd.setup {
-          cmd = { "clangd", 
+          cmd = { 
+              -- "/home/jakub/.espressif/tools/esp-clang/esp-19.1.2_20250312/esp-clang/bin/clangd",
+              "clangd", 
               "--header-insertion=never", 
               "--completion-style=detailed",
-              "--background-index",
-              "--query-driver=/home/jakub/.espressif/tools/xtensa-esp32-elf/esp-2021r1-8.4.0/**/bin/xtensa-esp32-elf-*",
+              -- "--background-index",
+              "--query-driver=/usr/bin/arm-none-eabi-gcc",
+              -- "--query-driver=/home/jakub/.espressif/tools/xtensa-esp32-elf/esp-2021r1-8.4.0/**/bin/xtensa-esp32-elf-*",
+              -- "--query-driver=/home/jakub/.espressif/tools/xtensa-esp-elf/esp-14.2.0_20241119/xtensa-esp-elf/bin/xtensa-esp-elf-*",
           },
       }
   end,
