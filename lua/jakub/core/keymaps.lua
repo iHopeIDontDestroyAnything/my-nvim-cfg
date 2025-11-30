@@ -64,3 +64,104 @@ keymap.set("n","<leader>dd","diw",{desc = "delete word under cursor (here)"})
 
 --select word
 keymap.set("n","<leader>vv","viw")
+
+local function align_token(text, token)
+    local lines = {}
+    local maxpos = 0
+
+    for line in text:gmatch("[^\n]+") do
+        local pos = line:find(token, 1, true)
+        if pos then
+            maxpos = math.max(maxpos, pos)
+        end
+        lines[#lines+1] = { line = line, pos = pos }
+    end
+
+    local out = {}
+    for _, l in ipairs(lines) do
+        if l.pos then
+            local pad = string.rep(" ", maxpos - l.pos)
+            out[#out+1] = l.line:gsub(token, pad .. token, 1)
+        else
+            out[#out+1] = l.line
+        end
+    end
+
+    return table.concat(out, "\n")
+    -- return out
+end
+
+local _should_swap = function(s_pos, e_pos)
+    if s_pos[2] > e_pos[2] then
+        return true
+    end
+    if s_pos[2] == e_pos[2] and s_pos[3] > e_pos[3] then
+        return true
+    end
+    return false
+end
+
+-- local function get_visual_line_selection()
+--     local s_pos      = vim.fn.getpos("v")
+--     local e_pos      = vim.fn.getpos(".")
+--     if _should_swap(s_pos, e_pos) then
+--         s_pos, e_pos = e_pos, s_pos
+--     end
+--
+--     local last_line = vim.api.nvim_buf_get_lines(s_pos[1], e_pos[2] - 1, e_pos[2], false)[1]
+--
+--     local last_col = #last_line
+--
+--     return vim.api.nvim_buf_get_text(
+--                     s_pos[1],
+--                     s_pos[2] - 1,
+--                     0,
+--                     e_pos[2] - 1,
+--                     last_col, {})
+-- end
+--
+
+local function aling_token_in_selection()
+    local s_pos      = vim.fn.getpos("v")
+    local e_pos      = vim.fn.getpos(".")
+    if _should_swap(s_pos, e_pos) then
+        s_pos, e_pos = e_pos, s_pos
+    end
+
+    local last_line = vim.api.nvim_buf_get_lines(s_pos[1], e_pos[2] - 1, e_pos[2], false)[1]
+
+    local last_col = #last_line
+
+    local lines =  vim.api.nvim_buf_get_text(
+                    s_pos[1],
+                    s_pos[2] - 1,
+                    0,
+                    e_pos[2] - 1,
+                    last_col, {})
+    local text = ""
+    for _, line in ipairs(lines) do
+      text = text .. line .. "\n"
+    end
+
+    local token = vim.fn.input("Token to aling : ")
+
+    local aligned_text = align_token(text,token)
+    local string_arr = vim.split(aligned_text, "\n")
+    vim.api.nvim_buf_set_text(
+        s_pos[1]          ,
+        s_pos[2] - 1      ,
+        0                 ,
+        e_pos[2] - 1      ,
+        last_col          ,
+        string_arr
+    )
+    vim.api.nvim_feedkeys(
+        vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
+        "x",
+        false
+    )
+end
+
+
+keymap.set("v","<leader>l", function() aling_token_in_selection() end)
+
