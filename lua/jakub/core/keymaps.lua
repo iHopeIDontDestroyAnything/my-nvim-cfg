@@ -65,6 +65,59 @@ keymap.set("n","<leader>dd","diw",{desc = "delete word under cursor (here)"})
 --select word
 keymap.set("n","<leader>vv","viw")
 
+
+local should_swap = function(s_pos, e_pos)
+    if s_pos[2] > e_pos[2] then
+        return true
+    end
+    if s_pos[2] == e_pos[2] and s_pos[3] > e_pos[3] then
+        return true
+    end
+    return false
+end
+
+local function get_visual_line_buf()
+    local s_pos = vim.fn.getpos("v")
+    local e_pos = vim.fn.getpos(".")
+    if should_swap(s_pos, e_pos) then
+        s_pos, e_pos = e_pos, s_pos
+    end
+
+    local last_line = vim.api.nvim_buf_get_lines(s_pos[1], e_pos[2] - 1, e_pos[2], false)[1]
+
+    s_pos[3] = 0
+    e_pos[3] = #last_line
+
+    return s_pos, e_pos
+end
+
+local function vim_buf_get_text(s_pos, e_pos)
+  local lines =  vim.api.nvim_buf_get_text(
+                  s_pos[1]         ,
+                  s_pos[2] - 1     ,
+                  s_pos[3]         ,
+                  e_pos[2] - 1     ,
+                  e_pos[3]         ,
+                  {})
+  local text = ""
+  for _, line in ipairs(lines) do
+    text = text .. line .. "\n"
+  end
+  return text
+end
+
+local function vim_buf_set_text(s_pos, e_pos, text)
+  vim.api.nvim_buf_set_text(
+      s_pos[1]          ,
+      s_pos[2] - 1      ,
+      s_pos[3]          ,
+      e_pos[2] - 1      ,
+      e_pos[3]          ,
+      vim.split(text, "\n")
+  )
+end
+
+
 local function align_token(text, token)
     local lines = {}
     local maxpos = 0
@@ -91,70 +144,15 @@ local function align_token(text, token)
     -- return out
 end
 
-local _should_swap = function(s_pos, e_pos)
-    if s_pos[2] > e_pos[2] then
-        return true
-    end
-    if s_pos[2] == e_pos[2] and s_pos[3] > e_pos[3] then
-        return true
-    end
-    return false
-end
-
--- local function get_visual_line_selection()
---     local s_pos      = vim.fn.getpos("v")
---     local e_pos      = vim.fn.getpos(".")
---     if _should_swap(s_pos, e_pos) then
---         s_pos, e_pos = e_pos, s_pos
---     end
---
---     local last_line = vim.api.nvim_buf_get_lines(s_pos[1], e_pos[2] - 1, e_pos[2], false)[1]
---
---     local last_col = #last_line
---
---     return vim.api.nvim_buf_get_text(
---                     s_pos[1],
---                     s_pos[2] - 1,
---                     0,
---                     e_pos[2] - 1,
---                     last_col, {})
--- end
---
-
 local function aling_token_in_selection()
-    local s_pos      = vim.fn.getpos("v")
-    local e_pos      = vim.fn.getpos(".")
-    if _should_swap(s_pos, e_pos) then
-        s_pos, e_pos = e_pos, s_pos
-    end
+    local s_pos, e_pos = get_visual_line_buf()
 
-    local last_line = vim.api.nvim_buf_get_lines(s_pos[1], e_pos[2] - 1, e_pos[2], false)[1]
-
-    local last_col = #last_line
-
-    local lines =  vim.api.nvim_buf_get_text(
-                    s_pos[1],
-                    s_pos[2] - 1,
-                    0,
-                    e_pos[2] - 1,
-                    last_col, {})
-    local text = ""
-    for _, line in ipairs(lines) do
-      text = text .. line .. "\n"
-    end
-
+    local buf_text = vim_buf_get_text(s_pos, e_pos)
     local token = vim.fn.input("Token to aling : ")
 
-    local aligned_text = align_token(text,token)
-    local string_arr = vim.split(aligned_text, "\n")
-    vim.api.nvim_buf_set_text(
-        s_pos[1]          ,
-        s_pos[2] - 1      ,
-        0                 ,
-        e_pos[2] - 1      ,
-        last_col          ,
-        string_arr
-    )
+    local aligned_text = align_token(buf_text,token)
+    vim_buf_set_text(s_pos, e_pos, aligned_text)
+
     vim.api.nvim_feedkeys(
         vim.api.nvim_replace_termcodes("<Esc>", true, false, true),
         "x",
